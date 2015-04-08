@@ -1,8 +1,9 @@
 .jumbotron
-  .container
-    %h1 Welcome to Reading List
-    %p Don't have time to read everything in one sitting? No problem! Reading List allows you to save pages to read later.
-    %p=link_to "Sign up", '#', class: 'btn btn-primary btn-lg'
+  .container.open-text
+    .row
+      %h1 Welcome to Reading List
+      %p Don't have time to read everything in one sitting? No problem! Reading List allows you to save pages to read later.
+      %p= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary btn-lg'
 
 .container
   .row

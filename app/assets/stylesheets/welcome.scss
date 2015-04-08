@@ -1,3 +1,13 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron {
+background-image: image-url('book_cover.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.open-text {
+  color: #fff;
+}
