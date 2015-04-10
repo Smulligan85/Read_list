@@ -1,0 +1,12 @@
+class CreateBookmarks < ActiveRecord::Migration
+  def change
+    create_table :bookmarks do |t|
+      t.string :url
+      t.string :tag
+      t.references :user, index: true
+
+      t.timestamps null: false
+    end
+    add_foreign_key :bookmarks, :users
+  end
+end
