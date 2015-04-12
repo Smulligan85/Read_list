@@ -2,3 +2,4 @@
   %h1 My Bookmarks
   - @bookmarks.each do |bookmark|
     %p= link_to bookmark.url, bookmark
+  = link_to "New Bookmark", new_bookmark_path, class: 'btn btn-success'
