@@ -1,0 +1,17 @@
+.container
+  %h1 Add a New Bookmark
+  
+  = form_for @bookmark do |f|
+    
+    .form-group
+      = f.label :url
+      = f.text_field :url, class: 'form-control', placeholder: "Enter Url"
+
+    .form-group
+      = f.label :tag_list
+      %br/
+      = f.text_field :tag_list, class: 'form-control', placeholder: "Enter Tag"
+
+    .actions
+      %br/
+      = f.submit "Submit Bookmark", class: 'btn btn-primary'
