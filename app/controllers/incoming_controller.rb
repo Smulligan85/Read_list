@@ -6,30 +6,36 @@ class IncomingController < ApplicationController
 
     # Take a look at these in your server logs
      # to get a sense of what you're dealing with.
-     puts "INCOMING PARAMS HERE: #{params}"
+     # puts "INCOMING PARAMS HERE: #{params}"
      
     # # Find the user by using params[:sender]
-    # @user = User.find(params[:sender])
+    @user = User.find(params[:sender])
     # # Find the topic by using params[:subject]
-    # @tag = Bookmark.find(@user.tag)
+    @tag = Bookmark.find(@user.tag_id)
     # # Assign the url to a variable after retreiving it from params["body-plain"]
-    # @url = Bookmark.find(params["body-plain"])
+    @url = Bookmark.find(params["body-plain"])
 
     # # Check if user is nil, if so, create and save a new user
-    # if @user == nil
-    #   @user.create.save
-    # end
+    if @user == nil
+      @user.create.save
+    end
 
     # # Check if the topic is nil, if so, create and save a new topic
-    # if @tag == nil
-    #   @tag.save
-    # end
+    if @tag == nil
+      @tag.save
+    end
 
     # # Now that you're sure you have a valid user and topic, build and save a new bookmark
-    # @bookmark = Bookmark.build(params[:user, :tag])
+    @bookmark = Bookmark.build(bookmark_params)
 
     # Assuming all went well. 
     head 200
+  end
+
+private
+
+  def bookmark_params
+    params.require(:bookmark).permit(:url, :tag_id)
   end
 
 end
