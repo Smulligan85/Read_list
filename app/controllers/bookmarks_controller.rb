@@ -17,7 +17,18 @@ class BookmarksController < ApplicationController
     redirect_to root_path
   end
 
+  def update
+    @bookmark = Bookmark.find(params[:id])    
+    if @bookmark.update_attributes(bookmark_params)
+      @bookmark.save
+      redirect_to root_path
+    else
+      flash[:error] = "Could not update bookmark. Please try again."
+    end
+  end
+
   def edit
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def destroy
