@@ -11,7 +11,7 @@ class IncomingController < ApplicationController
     # # # Find the user by using params[:sender]
     @user = User.find_by(email: params[:sender])
     # # # Find the topic by using params[:subject]
-    @tag = Bookmark.find_by(params[:subject])
+    @tag = Bookmark.find_by(params[:tag_id])
     # # # Assign the url to a variable after retreiving it from params["body-plain"]
     @url = params["body-plain"]
 
