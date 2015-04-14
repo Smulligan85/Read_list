@@ -11,17 +11,18 @@ class IncomingController < ApplicationController
     # # # Find the user by using params[:sender]
     @user = User.find_by(email: params[:sender])
     # # # Find the topic by using params[:subject]
-    @tag = Bookmark.find_by(params[:tag_id])
+    @tag = Bookmark.find_by(params[:subject])
     # # # Assign the url to a variable after retreiving it from params["body-plain"]
     @url = params["body-plain"]
 
     # # # Check if user is nil, if so, create and save a new user
-    if @user == nil
-      @user.create.save
+    if @user.nil?
+      @user.new(email: params[:sender], password: "temp0rary_passw0rd")
+      @user.save!
     end
 
     # # # Check if the topic is nil, if so, create and save a new topic
-    if @tag == nil
+    if @tag.nil?
       @tag.save
     end
 
