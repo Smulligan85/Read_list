@@ -15,6 +15,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.create(bookmark_params)
+    @bookmark.user = current_user
     authorize @bookmark
     if @bookmark.save
       redirect_to root_path, notice: "Bookmark saved."
