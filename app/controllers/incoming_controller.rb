@@ -37,7 +37,7 @@ class IncomingController < ApplicationController
 private
 
   def bookmark_params
-    params.require(:bookmark).permit(:url, :tag_id)
+    params.require(:bookmark).permit(:url)
   end
 
 end
