@@ -9,7 +9,7 @@ class IncomingController < ApplicationController
     user = User.find_by(email: params[:sender])
 
     if user.nil?
-      head 500
+      return head 500
     end
 
     bookmark = user.bookmarks.build(url: params["body-plain"])

@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
      def create
      @bookmark = Bookmark.find(params[:bookmark_id])
-     like = current_user.likes.build(bookmark: @bookmark)
+     like = current_user.likes.build(bookmark_id: @bookmark.id)
  
      if like.save
         flash[:notice] = "You liked the bookmark!"
@@ -15,10 +15,10 @@ class LikesController < ApplicationController
    def destroy
      # Get the bookmark from the params
      @bookmark = Bookmark.find(params[:bookmark_id])
-     @like = current_user.likes.find(params[:user_id])
+     @like = current_user.likes.find(params[:id])
      # Find the current user's like with the ID in the params
  
-     if like.destroy
+     if @like.destroy
         flash[:notice] = "You unliked the bookmark!"
         redirect_to @bookmark
      else
