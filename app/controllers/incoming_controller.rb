@@ -12,7 +12,7 @@ class IncomingController < ApplicationController
       head 500
     end
 
-    bookmark = user.bookmarks.build(url: params("body-plain")
+    bookmark = user.bookmarks.build(url: params["body-plain"])
     # # # Add the tag by using params[:subject]
     bookmark.tag_list.add(params[:subject])
     if bookmark.save
