@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
      def create
-     @bookmark = Bookmark.find(params[:bookmark_id])
+     @bookmark = Bookmark.friendly.find(params[:bookmark_id])
      like = current_user.likes.build(bookmark_id: @bookmark.id)
  
      if like.save
@@ -14,7 +14,7 @@ class LikesController < ApplicationController
 
    def destroy
      # Get the bookmark from the params
-     @bookmark = Bookmark.find(params[:bookmark_id])
+     @bookmark = Bookmark.friendly.find(params[:bookmark_id])
      @like = current_user.likes.find(params[:id])
      # Find the current user's like with the ID in the params
  
