@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+    resources :users, only: [:show]
 
   authenticated :user do
-    root 'bookmarks#index', as: :authenticated_root
+    root 'users#index', as: :authenticated_root
   end
   root 'welcome#index'
 

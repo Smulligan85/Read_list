@@ -1,0 +1,4 @@
+.container
+  %h1 #{@user.name} Bookmarks
+  - @user_bookmarks.each do |bookmark|
+    %p= link_to bookmark.url, bookmark
